@@ -1,7 +1,8 @@
-import TodoTemplate from './components/TodoTemplate';
-import TodoInsert from './components/TodoInsert';
-import TodoList from './components/TodoList';
+import TodoTemplate from './components/todo_list/TodoTemplate';
+import TodoInsert from './components/todo_list/TodoInsert';
+import TodoList from './components/todo_list/TodoList';
 import { useCallback, useRef, useState } from 'react';
+import Calendar from './components/calendar/Calendar';
 
 const App = () => {
   const [todos, setTodos] = useState([
@@ -46,10 +47,16 @@ const App = () => {
   }, [todos]);
 
   return (
-    <TodoTemplate>
-      <TodoInsert onInsert={onInsert} />
-      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
-    </TodoTemplate>
+    <>
+      <Calendar />
+
+      {/*
+      <TodoTemplate>
+        <TodoInsert onInsert={onInsert} />
+        <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+      </TodoTemplate>
+      */}
+    </>
   );
 };
 

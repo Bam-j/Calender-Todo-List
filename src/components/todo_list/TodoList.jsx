@@ -1,4 +1,4 @@
-import '../styles/TodoList.scss';
+import '../../styles/todo_list/TodoList.scss';
 import TodoListItem from './TodoListItem';
 
 const TodoList = ({ todos, onRemove, onToggle }) => {
