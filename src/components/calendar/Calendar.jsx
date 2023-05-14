@@ -1,12 +1,12 @@
 import { useCallback, useRef, useState } from 'react';
-import DatePicker from 'react-datepicker';
-import { registerLocale } from 'react-datepicker';
-import ko from 'date-fns/locale/ko';
-import '../../styles/calendar/Calendar.scss';
-import 'react-datepicker/dist/react-datepicker.css';
+import Header from './Header';
 import TodoTemplate from '../todo_list/TodoTemplate';
 import TodoInsert from '../todo_list/TodoInsert';
 import TodoList from '../todo_list/TodoList';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import ko from 'date-fns/locale/ko';
+import '../../styles/calendar/Calendar.scss';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const Calendar = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -51,6 +51,7 @@ const Calendar = () => {
 
   return (
     <>
+      <Header />
       <div className={'calendar'}>
         <DatePicker
           locale={'ko'}
@@ -66,7 +67,7 @@ const Calendar = () => {
           onClick={e => {
             if (e.target === modalBackground.current) {
               setOpenTodoList(false);
-          }}}
+            }}}
         >
           <TodoTemplate>
             <TodoInsert onInsert={onInsert} />
