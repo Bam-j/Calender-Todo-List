@@ -14,6 +14,7 @@ const Calendar = () => {
   const [todos, setTodos] = useState([]);
 
   const nextId = useRef(4);
+  const modalBackground = useRef();
 
   const onChange = date => {
     setStartDate(date);
@@ -51,10 +52,22 @@ const Calendar = () => {
   return (
     <>
       <div className={'calendar'}>
-        <DatePicker locale={'ko'} selected={startDate} onChange={onChange} inline />
+        <DatePicker
+          locale={'ko'}
+          selected={startDate}
+          onChange={onChange}
+          inline
+        />
       </div>
       {openTodoList &&
-        <div className={'todo-list-container'}>
+        <div
+          className={'todo-list-container'}
+          ref={modalBackground}
+          onClick={e => {
+            if (e.target === modalBackground.current) {
+              setOpenTodoList(false);
+          }}}
+        >
           <TodoTemplate>
             <TodoInsert onInsert={onInsert} />
             <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
