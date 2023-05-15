@@ -8,8 +8,6 @@ const TodoList = ({ todos, onRemove, onToggle }) => {
         <TodoListItem
 					todo={todo}
 					key={todo.id}
-          month={todo.month}
-          date={todo.date}
 					onRemove={onRemove}
 					onToggle={onToggle}
 				/>,

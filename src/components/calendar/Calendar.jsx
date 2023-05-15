@@ -58,9 +58,9 @@ const Calendar = () => {
 
   registerLocale('ko', ko);
 
-  //const todoDataOfSelectedDate = todos.filter(todos =>
-  //  todos.month === startDate.month && todos.date === startDate.date
-  //);
+  const todoDataOfSelectedDate = todos.filter(todos =>
+    todos.month === (startDate.getMonth() + 1) &&  todos.date === startDate.getDate()
+  );
 
   return (
     <>
@@ -85,7 +85,7 @@ const Calendar = () => {
           <TodoTemplate>
             <TodoInsert onInsert={onInsert} />
             <TodoList
-              todos={todos}
+              todos={todoDataOfSelectedDate}
               onRemove={onRemove}
               onToggle={onToggle}
             />
