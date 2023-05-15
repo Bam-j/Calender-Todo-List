@@ -13,8 +13,9 @@ const Calendar = () => {
   const [openTodoList, setOpenTodoList] = useState(false);
   const [todos, setTodos] = useState([]);
 
-  const nextId = useRef(4);
+  const nextId = useRef(1);
   const modalBackground = useRef();
+  const todoData = JSON.parse(localStorage.getItem('todo-data') || '[]');
 
   const onChange = date => {
     setStartDate(date);
@@ -26,9 +27,17 @@ const Calendar = () => {
       id: nextId.current,
       text,
       checked: false,
+      month: startDate.getMonth() + 1,
+      date: startDate.getDate(),
     };
 
     setTodos(todos.concat(todo));
+    console.log(todos);
+    console.log(todo);
+
+    todoData.push(todo);
+    localStorage.setItem('todo-data', JSON.stringify(todoData));
+
     nextId.current += 1;
   }, [todos]);
 
@@ -48,6 +57,10 @@ const Calendar = () => {
   }, [todos]);
 
   registerLocale('ko', ko);
+
+  //const todoDataOfSelectedDate = todos.filter(todos =>
+  //  todos.month === startDate.month && todos.date === startDate.date
+  //);
 
   return (
     <>
@@ -71,7 +84,11 @@ const Calendar = () => {
         >
           <TodoTemplate>
             <TodoInsert onInsert={onInsert} />
-            <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+            <TodoList
+              todos={todos}
+              onRemove={onRemove}
+              onToggle={onToggle}
+            />
           </TodoTemplate>
         </div>
       }
