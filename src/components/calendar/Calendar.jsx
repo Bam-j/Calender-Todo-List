@@ -39,7 +39,7 @@ const Calendar = () => {
     localStorage.setItem('todo-data', JSON.stringify(todoData));
 
     nextId.current += 1;
-  }, [todos]);
+  }, [todos, startDate, todoData]);
 
   const onRemove = useCallback(id => {
     setTodos(todos.filter(
@@ -68,9 +68,11 @@ const Calendar = () => {
       <div className={'calendar'}>
         <DatePicker
           locale={'ko'}
+          dateFormat={'yyyy년 MM월 dd일'}
+          dateFormatCalendar={'yyyy년 MM일'}
           selected={startDate}
           onChange={onChange}
-          inline
+          showIcon
         />
       </div>
       {openTodoList &&
