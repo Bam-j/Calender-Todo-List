@@ -3,3 +3,7 @@ body{
   padding: 0;
   background-color: #ffffff;
 }
+
+.react-datepicker__triangle {
+  transform: translate(200px, 0px) !important;
+}
