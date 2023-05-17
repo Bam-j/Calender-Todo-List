@@ -65,15 +65,18 @@ const Calendar = () => {
   return (
     <>
       <Header />
-      <div className={'calendar'}>
-        <DatePicker
-          locale={'ko'}
-          dateFormat={'yyyy년 MM월 dd일'}
-          dateFormatCalendar={'yyyy년 MM일'}
-          selected={startDate}
-          onChange={onChange}
-          showIcon
-        />
+      <div className={'date-picker-container'}>
+        <div className={'date-picker'}>
+          <DatePicker
+            className={'datepicker'}
+            locale={'ko'}
+            dateFormat={'yyyy년 MM월 dd일'}
+            dateFormatCalendar={'yyyy년 MM일'}
+            selected={startDate}
+            onChange={onChange}
+            showIcon
+          />
+        </div>
       </div>
       {openTodoList &&
         <div

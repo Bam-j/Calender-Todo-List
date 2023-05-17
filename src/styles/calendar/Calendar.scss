@@ -1,7 +1,11 @@
-.calendar {
+.date-picker-container {
   display: flex;
   justify-content: center;
   margin-top: 4rem;
+
+  .date-picker {
+    margin: auto;
+  }
 }
 
 .todo-list-container {
